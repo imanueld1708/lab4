@@ -18,13 +18,13 @@ public class twitterMapper extends Mapper<Object, Text, Text, Text> {
 	 if(fields.length >= 4){
         	data.set(fields[0].toString());
             	
-		long epochtime = Long.parseLong(fields[0]);
-            	Date date = new Date(epochtime);
-            	SimpleDateFormat sdf = new SimpleDateFormat("HH", Locale.ENGLISH);
-            	sdf.setTimeZone(TimeZone.getTimeZone("GMT-3"));
-		String dateformatted = sdf.format(date);
-		hour.set(dateformatted);
-
+		//long epochtime = Long.parseLong(fields[0]);
+            	//Date date = new Date(epochtime);
+            	//SimpleDateFormat sdf = new SimpleDateFormat("HH", Locale.ENGLISH);
+            	//sdf.setTimeZone(TimeZone.getTimeZone("GMT-3"));
+		//String dateformatted = sdf.format(date);
+		//hour.set(dateformatted);
+		hour.set(fields[0].toString());
             context.write(data, hour);
           }
 
