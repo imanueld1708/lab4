@@ -3,21 +3,24 @@ import java.util.Iterator;
 import java.util.*;
 import java.text.*;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 
-public class twitterReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+public class twitterReducer extends Reducer<Text, Text, Text, Text> {
 
-    private IntWritable result = new IntWritable();
+    private Text result = new Text();
 
-    public void reduce(Text key, Iterable<IntWritable> values, Context context)
+    public void reduce(Text key, Iterable<Text> values, Context context)
 
               throws IOException, InterruptedException {
-       	for(IntWritable value : values){
-           result.set(values);
-        }
-        context.write(key,result);
+       
+	for(Text value:values){
+           result.set(value.toString());
+      }
+       context.write(key,result);
     }
 
 }
+
