@@ -8,12 +8,12 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class twitterMapper extends Mapper<LongWritable, Text, Text, Text> {
+public class twitterMapper extends Mapper<Object, Text, Text, Text> {
     private Text hour = new Text();
     private Text data = new Text();
 
 
-    public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+    public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
      String[] fields = value.toString().split(";",-1);
 	 if(fields.length >= 4){
         	data.set(fields[0].toString());
