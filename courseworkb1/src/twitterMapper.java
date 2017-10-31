@@ -15,7 +15,7 @@ public class twitterMapper extends Mapper<LongWritable, Text, Text, Text> {
 
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
      String[] fields = value.toString().split(";",-1);
-	 if(fields.length == 4){
+	 if(fields.length >= 4){
         	data.set(fields[0].toString());
             	
 		long epochtime = Long.parseLong(fields[0]);
